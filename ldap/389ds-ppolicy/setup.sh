@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-LDAP_URI="ldap://localhost:389"
+LDAP_URI="ldap://localhost:3389"
 DM_DN="cn=Directory Manager"
 DM_PW="admin1234"
 SUFFIX="dc=example,dc=org"

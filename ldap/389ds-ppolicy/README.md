@@ -31,7 +31,7 @@ docker compose up -d --build
 After testing, reset the test user's password back to `changeme` and re-enable the forced password change:
 
 ```bash
-ldapmodify -x -H ldap://localhost:389 -D "cn=Directory Manager" -w admin1234 <<'EOF'
+ldapmodify -x -H ldap://localhost:3389 -D "cn=Directory Manager" -w admin1234 <<'EOF'
 dn: uid=testuser,ou=people,dc=example,dc=org
 changetype: modify
 replace: userPassword
@@ -47,7 +47,7 @@ docker compose down -v
 
 ## What the setup does
 
-1. Starts 389 Directory Server (Fedora 42 based image) on port 389
+1. Starts 389 Directory Server (Fedora 42 based image) on port 3389
 2. Creates a manager account with `write` access to `userPassword` and `read` access to the directory
 3. Enables the global password policy: `passwordMustChange: on`, `passwordExp: on`, `passwordMaxAge: 86400`, `passwordWarning: 86401`, `passwordSendExpiringTime: on`
 4. Creates a test user and sets their password to `changeme`
@@ -111,7 +111,7 @@ See the [Keycloak LDAP federation documentation](https://www.keycloak.org/docs/l
 |---|---|
 | Edit Mode | `WRITABLE` |
 | Vendor | `Red Hat Directory Server` |
-| Connection URL | `ldap://localhost:389` |
+| Connection URL | `ldap://localhost:3389` |
 | Bind DN | `uid=manager,ou=people,dc=example,dc=org` |
 | Bind Credential | `manager` |
 | Users DN | `ou=people,dc=example,dc=org` |
